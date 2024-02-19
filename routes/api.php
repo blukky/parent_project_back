@@ -26,7 +26,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::prefix("organizations")->group(function (){
+Route::middleware(['cors'])->prefix("organizations")->group(function (){
     return [
         Route::get("/", GetOrganizationTypesController::class),
         Route::post("/", CreateOrganizationTypeController::class),
@@ -35,7 +35,7 @@ Route::prefix("organizations")->group(function (){
 });
 
 
-Route::prefix("institutions")->group(function (){
+Route::middleware(['cors'])->prefix("institutions")->group(function (){
     return [
         Route::get("/", GetInstitutionTypesController::class),
         Route::post("/", CreateInstitutionTypeController::class),
@@ -44,7 +44,7 @@ Route::prefix("institutions")->group(function (){
 });
 
 
-Route::prefix("legal_entities")->group(function (){
+Route::middleware(['cors'])->prefix("legal_entities")->group(function (){
     return [
         Route::get("/", GetLegalEntitiesController::class),
         Route::post("/", CreateInstitutionTypeController::class),
